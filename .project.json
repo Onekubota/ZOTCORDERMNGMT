@@ -1,0 +1,22 @@
+{
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/ZGW_OTC_ZOMT_OPENSODETAILS_SRV/",
+    "metadataFilePath": "localService/metadata.xml",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "deploy": {
+    "destination": "KTC",
+    "name": "ZOTCORDERMNGMNT"
+  },
+  "projectType": [
+    "sap.watt.uitools.ide.fiori",
+    "com.watt.common.builder.sapui5clientbuild"
+  ],
+  "build": {
+    "buildRequired": true,
+    "targetFolder": "dist",
+    "lastBuildDateTime": "Wed, 19 Oct 2022 19:42:40 GMT"
+  }
+}

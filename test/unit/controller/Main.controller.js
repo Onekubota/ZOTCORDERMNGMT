@@ -1,0 +1,1 @@
+sap.ui.define(["zomtopenso/zomtopenso/controller/Main.controller"],function(o){"use strict";QUnit.module("Main Controller");QUnit.test("I should test the Main controller",function(n){var t=new o;t.onInit();n.ok(t)})});

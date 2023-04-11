@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:t="sap.ui.table" xmlns:smartTable="sap.ui.comp.smarttable">
+	<Dialog title="Mass Update" class="sapUiContentPadding" stretchOnPhone="true" id="multipleEditingDialog" contentWidth="30rem"
+		horizontalScrolling="false">
+		<content>
+			<VBox>
+				<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" title="" labelSpanXL="3" labelSpanL="3"
+					labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+					columnsL="1" columnsM="1" singleContainerFullSize="false">
+					<f:content>
+						<Label text="{i18n>deliveryPriority}"/>
+						<ToolbarSpacer/>
+						<ComboBox id="comboDelPriority" showSecondaryValues="true" items="{/DeliveryPriorityVHSet}" selectionChange="handleSelectionChange">
+							<core:ListItem key="{DeliveryPriority}" text="{DeliveryPriority} " additionalText="{DeliveryPriorityDescription}"/>
+						</ComboBox>
+						<Label text="{i18n>firstDate}"/>
+						<!--<DatePicker id="firstDate" formatPattern="short" change="handleChange" class="sapUiSmallMarginBottom"/>-->
+						  <DatePicker id="firstDate"  value="{
+								path: '{MultiEditModel>/firstDate}',
+								type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy/MM/dd', strictParsing: true , UTC: true}
+							    }" displayFormat="yyyy.MM.dd"  change="hanldeDateChange" />
+						<Label text="{i18n>incoterm}"/>
+						<ComboBox id="comboIncoterm" showSecondaryValues="true" items="{/IncotermsVHSet}" selectionChange="handleSelectionChange">
+							<core:ListItem key="{IncotermsClassification}" text="{IncotermsClassification} " additionalText="{IncotermsClassificationName}"/>
+						</ComboBox>
+						<Label id="delGroupInput" text="{i18n>deliveryGroup}"/>
+						<Input value="{MultiEditModel>/deliveryGroup}"/>
+						<Label text="{i18n>plant}"/>
+						<ComboBox id="comboPlant" showSecondaryValues="true" items="{/PlantVHSet}" selectionChange="handleSelectionChange">
+							<core:ListItem key="{Plant}" text="{Plant} " additionalText="{PlantName}"/>
+						</ComboBox>
+						<Label text="{i18n>paymentTerm}"/>
+						<Input id="paymentTermInput" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onPaymentTermVHRequest"
+							suggestionItems="{/PaymentTermsVHSet}">
+							<suggestionItems>
+								<core:Item text="{PaymentTerms}"/>
+							</suggestionItems>
+						</Input>
+						<Label text="{i18n>deliveryBlock}"/>
+						<ComboBox id="comboDelBlock" showSecondaryValues="true" items="{/DeliveryBlockVHSet}" selectionChange="handleSelectionChange">
+							<core:ListItem key="{DeliveryBlockReason}" text="{DeliveryBlockReason} " additionalText="{DeliveryBlockReasonText}"/>
+						</ComboBox>
+						<CheckBox id="chcbxDelFlag" text="{i18n>deliveryFlag}"  select="handleChcbxChange"/>
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+		<buttons>
+			<Button text="Save" press="onMultiEditSave" type="Emphasized"/>
+			<Button text="Cancel" press="onMultiEditClose"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

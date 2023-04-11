@@ -1,0 +1,187 @@
+<mvc:View controllerName="zomtopenso.zomtopenso.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:u="sap.ui.unified"
+	xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" height="100%">
+	<App>
+		<pages>
+			<Page showHeader="false">
+				<content>
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" class="sapUiSmallMarginTop" entitySet="ZOMT_OPENSODETAILSSet"
+						persistencyKey="SmartFilterPKey" considerSelectionVariants="true" useDateRangeType="true" initialise="onInitSmartFilter"
+						search="onGoBtnPress">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Dealer" preventInitialDataFetchInValueHelpDialog="false" index="0" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Plant" mandatory="mandatory" preventInitialDataFetchInValueHelpDialog="false" index="1"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Salesorganization" mandatory="mandatory" preventInitialDataFetchInValueHelpDialog="false"
+								index="2" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Salesoffice" preventInitialDataFetchInValueHelpDialog="false" index="3"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Salesgroup" preventInitialDataFetchInValueHelpDialog="false" index="4"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Salesdocumenttype" preventInitialDataFetchInValueHelpDialog="false" index="5"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Salesdocument" preventInitialDataFetchInValueHelpDialog="false" index="6"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Productgroup" preventInitialDataFetchInValueHelpDialog="false" index="7"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Material" preventInitialDataFetchInValueHelpDialog="false" index="8" visibleInAdvancedArea="true"
+							label="Material" ></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Requesteddeliverydate" id="DP5" index="9" considerSelectionVariants="true"
+								label="Requested Delivery Date" groupId="_BASIC" visibleInAdvancedArea="true" hasValueHelpDialog="true"
+								conditionType="sap.ui.comp.config.condition.DateRangeType">
+								<!--Requesteddeliverydate-->
+								<!--<smartFilterBar:customControl>-->
+								<!--	<DateRangeSelection id="DP5"></DateRangeSelection>-->
+								<!--</smartFilterBar:customControl>-->
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="MaterialAvlDate" id="idMatAvlDate" index="10" considerSelectionVariants="true"
+								label="Deliv.Create (Mat.Avail) Date" groupId="_BASIC" visibleInAdvancedArea="true" hasValueHelpDialog="true" 
+									conditionType="sap.ui.comp.config.condition.DateRangeType" >
+								<!--<smartFilterBar:customControl>-->
+								<!--	<DateRangeSelection id="DP6"></DateRangeSelection>-->
+								<!--</smartFilterBar:customControl>-->
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Plandeliverycreatedate" id="idPlndDelDate" index="11" considerSelectionVariants="true"
+								label="Plan Delivery Create Date" groupId="_BASIC" visibleInAdvancedArea="true" hasValueHelpDialog="true"
+									conditionType="sap.ui.comp.config.condition.DateRangeType" >
+								<!--<smartFilterBar:customControl>-->
+								<!--	<DateRangeSelection id="DP7"></DateRangeSelection>-->
+								<!--</smartFilterBar:customControl>-->
+							</smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="CustomerPoNo" preventInitialDataFetchInValueHelpDialog="false" index="12"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="OrderReason" preventInitialDataFetchInValueHelpDialog="false" index="13"
+								visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="RSM" preventInitialDataFetchInValueHelpDialog="false" index="14" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+					</smartFilterBar:SmartFilterBar>
+					<HBox>
+						<VBox class="sapUiSmallMargin">
+							<Label text="Material" labelFor="GroupA"/>
+							<RadioButtonGroup id="APNMaterial">
+								<RadioButton text="All Material" selected="true"/>
+								<RadioButton text="Prime Material"/>
+								<RadioButton text="Non-Prime Material"/>
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class="sapUiSmallMargin">
+							<Label text="Unit" labelFor="GroupB"/>
+							<RadioButtonGroup id="PNPowerUnit">
+								<RadioButton text="All" selected="true"/>
+								<RadioButton text="Power Unit"/>
+								<RadioButton text="Non-Power Unit"/>
+							</RadioButtonGroup>
+						</VBox>
+						<VBox class="sapUiSmallMargin">
+							<Label text="Orders" labelFor="GroupC"/>
+							<RadioButtonGroup id="OUAOrders">
+								<RadioButton text="Open Orders" selected="true"/>
+								<RadioButton text="Allocated Orders"/>
+								<RadioButton text="Unallocated Orders"/>
+							</RadioButtonGroup>
+						</VBox>
+					</HBox>
+					<smartTable:SmartTable id="tableSalesOrders" height="100%" width="100%" enableAutoColumnWidth="true" visible="true" showRowCount="true"
+						smartFilterId="smartFilterBar" header="Sales Order" entitySet="ZOMT_OPENSODETAILSSet" useExportToExcel="true"
+						class="sapUiResponsiveContentPadding" tableType="ResponsiveTable" useTablePersonalisation="true" considerSelectionVariants="true"
+						persistencyKey="SmartTablePKey" enableAutoBinding="false" useVariantManagement="false" fitContainer="true"
+						beforeRebindTable="onBeforeRebindTable"
+						initiallyVisibleFields="Salesdocument,Salesdocumentitem,Dealer,Salesdocumenttype,OrderStatus,Material,Salesdocumentitemtext,Plant,Material des,Salesorganization,Salesdocumenttype,CreditHoldFlag,CridetBlockFlag,SerializedItem,AssyOrderBlock">
+						<!--<smartTable:layoutData>-->
+						<!--	<FlexItemData growFactor="1" baseSize="0%"/>-->
+						<!--</smartTable:layoutData>-->
+						<smartTable:customToolbar>
+							<OverflowToolbar design="Transparent">
+								<ToolbarSpacer/>
+								<Button type="Transparent" id="btnMultiEdit" text="Edit Multiple" enabled="false" press="onOpenMultiEdit"/>
+							</OverflowToolbar>
+						</smartTable:customToolbar>
+						<!--<t:Table width="100%" id="idTab" rows="{path:'/ZOMT_OPENSODETAILSSet'}">-->
+							<t:Table width="100%" id="idTab" >
+							<t:columns>
+									<t:Column>
+									<t:customData>
+										<core:CustomData key="p13nData"
+											value='\{"leadingProperty": "Salesdocument","columnKey": "Salesdocument", "width": "360px", "columnIndex": 0}'/>
+									</t:customData>
+									<Text text="Sales Document"/>
+									<t:template>
+										<Link text="{Salesdocument}" press="onPressSalesOrderNumber"/>
+									</t:template>
+								</t:Column>
+								<!--<t:Column>-->
+								<!--	<t:customData>-->
+								<!--		<core:CustomData key="p13nData"-->
+								<!--			value='\{"leadingProperty": "CreditHoldFlag","columnKey": "CreditHoldFlag", "width": "360px", "columnIndex": 5}'/>-->
+								<!--	</t:customData>-->
+								<!--	<Text text="Credit Hold Flag"/>-->
+								<!--	<t:template>-->
+								<!--		<Text id="creditHoldText" value="{CreditHoldFlag}"/>-->
+								<!--	</t:template>-->
+								<!--</t:Column>-->
+								<!--<t:Column>-->
+								<!--	<t:customData>-->
+								<!--		<core:CustomData key="p13nData"-->
+								<!--			value='\{"leadingProperty": "CridetBlockFlag","columnKey": "CridetBlockFlag", "width": "360px", "columnIndex": 5}'/>-->
+								<!--	</t:customData>-->
+								<!--	<Text text="Credit Block Flag"/>-->
+								<!--	<t:template>-->
+								<!--		<Text id="creditBlockText" value="{CridetBlockFlag}"/>-->
+								<!--	</t:template>-->
+								<!--</t:Column>-->
+								<!--<t:Column>-->
+								<!--	<t:customData>-->
+								<!--		<core:CustomData key="p13nData"-->
+								<!--			value='\{"leadingProperty": "SerializedItem","columnKey": "SerializedItem", "width": "360px", "columnIndex": 5}'/>-->
+								<!--	</t:customData>-->
+								<!--	<Text text="Serialized Item"/>-->
+								<!--	<t:template>-->
+								<!--		<Text id="SerializedItemText" value="{SerializedItem}"/>-->
+								<!--	</t:template>-->
+								<!--</t:Column>-->
+								<!--<t:Column>-->
+								<!--	<t:customData>-->
+								<!--		<core:CustomData key="p13nData"-->
+								<!--			value='\{"leadingProperty": "AssyOrderBlock","columnKey": "AssyOrderBlock", "width": "360px", "columnIndex": 5}'/>-->
+								<!--	</t:customData>-->
+								<!--	<Text text="Assy Order Block"/>-->
+								<!--	<t:template>-->
+								<!--		<Text id="AssyOrderBlockText" value="{AssyOrderBlock}"/>-->
+								<!--	</t:template>-->
+								<!--</t:Column>-->
+							</t:columns>
+						</t:Table>
+					</smartTable:SmartTable>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
